@@ -1,0 +1,259 @@
+#reverse string val inside dict using comprehensions
+d={1:22,
+   2:33,
+   3:44,
+   4:88,
+   8: 'java',
+   9:'python',
+   10:"css"
+}
+# z=d.values
+x={key:value[::-1] for key,value in d.items() if isinstance(value ,str) }
+print(x)
+
+d={1:22,
+   2:33,
+   3:44,
+   4:88,
+   8: 'java',
+   9:'python',
+   10:"css"
+}
+y={value:value for key,value in d.items() if isinstance(value, int) and value%2!=0}
+print(y)
+
+d={ele:ele for ele in range(1,10)}
+print(d)
+
+d={ele:ele**2 for ele in range(1,6)}
+print(d)
+
+===accessing elements from dict and inside dict
+d={1:"java",
+    2:"python",
+    3:"html",
+    4:{11:"html", 12:"css", 13:"javascript"}
+}
+print(d)
+
+for key,value in d.items():
+    print(key,":",value)
+
+for ele in d[4]:
+    print(ele)
+
+for key,value in d[4].items():
+    print(key, value)
+
+for ele in d[4]:
+    print(ele, d[4].get(ele))
+
+d={1:"java",
+    2:"python",
+    3:"html",
+    4:{11:"html", 12:"css", 13:"javascript"},
+    5:"css"
+}
+x=d.values()
+for ele in x:
+    if len(x)%2==0:
+        print(ele)
+    else:
+        print("odd no len values")                 // doubt 
+
+#==print only keys with values 
+l1=[1,2,3,4,5]
+l2=["odd","even","odd","even","odd"]
+x=dict(zip(l1,l2))
+y=x.keys()
+for ele in y:
+    if ele%2!=0:
+        print(ele,x.get(ele))
+
+d={1:22,
+   2:33,
+   3:44,
+   4:88,
+   8: 'java',
+   9:'python',
+   10:"css"
+}
+l1=[]
+l2=[]
+x=d.values()
+for ele in x:
+    if isinstance(ele ,int) and ele%2==0:
+        l1.append(ele)
+        print("even no :", ele)
+    elif isinstance(ele, str):
+        l2.append(ele)
+
+print(l1)     
+print(l2)   
+>>> d{"apple":"fruit","carrot":"vegitable","salad":"food"}
+  File "<stdin>", line 1
+    d{"apple":"fruit","carrot":"vegitable","salad":"food"}
+     ^
+SyntaxError: invalid syntax
+>>> d={"apple":"fruit","carrot":"vegitable","salad":"food"}
+>>> d
+{'apple': 'fruit', 'carrot': 'vegitable', 'salad': 'food'}
+>>> print(type(d))
+<class 'dict'>
+>>> print(d["apple"])
+fruit
+>>> for key, value in d.items():
+...     print(key)
+...
+apple
+carrot
+salad
+>>>     print(key, value)
+  File "<stdin>", line 1
+    print(key, value)
+IndentationError: unexpected indent
+>>> for key, value in d.items():
+...     print(key, value)
+...
+apple fruit
+carrot vegitable
+salad food
+>>> d={"apple":"fruit","carrot":"vegitable","salad":"food"}
+>>> print(d.get("apple"))
+fruit
+>>> del d
+>>>
+>>> d
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'd' is not defined. Did you mean: 'id'?
+>>> d={1:"java", 2:"python", 3:"css", 4:"html",5:"javascript"}
+>>> print(d[1])
+java
+>>> print(d[1:3])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: slice(1, 3, None)
+>>> d[1]="programming language"
+>>> d
+{1: 'programming language', 2: 'python', 3: 'css', 4: 'html', 5: 'javascript'}
+>>> d=dict("ab","cd"0
+  File "<stdin>", line 1
+    d=dict("ab","cd"0
+                ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>> d=dict("ab","cd")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: dict expected at most 1 argument, got 2
+>>> d=dict(("ab","cd"))
+>>> d
+{'a': 'b', 'c': 'd'}
+>>> del d
+>>> d
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'd' is not defined. Did you mean: 'id'?
+>>> d=dict(((1,2),(3,4),(5,6)))
+>>> d
+{1: 2, 3: 4, 5: 6}
+>>> a=[1,2,3,4]
+>>> b=[5,6,7,8]
+>>> z=zip(a,b)
+>>>
+>>>
+>>> print(z)
+<zip object at 0x0000025BECFE1740>
+>>> d3=dict(zip(a,b))
+>>> d3
+{1: 5, 2: 6, 3: 7, 4: 8}
+>>> l=[6,5,4,3,2,1]
+>>> for i in enumerate(l):
+...     print(i)
+...
+(0, 6)
+(1, 5)
+(2, 4)
+(3, 3)
+(4, 2)
+(5, 1)
+>>> d
+{1: 2, 3: 4, 5: 6}
+>>> del d
+>>> d
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'd' is not defined. Did you mean: 'd3'?
+>>> d={101:"prog",102:"java",103:"css",104:"html"}
+>>> d
+{101: 'prog', 102: 'java', 103: 'css', 104: 'html'}
+>>> for i in d:
+...     print(i, d[i])
+...
+101 prog
+102 java
+103 css
+104 html
+>>> d={101:"prog",102:"java",103:"css",104:"html"}
+>>> for i in d:
+...     print(i,d.get(i))
+...
+101 prog
+102 java
+103 css
+104 html
+>>> d
+{101: 'prog', 102: 'java', 103: 'css', 104: 'html'}
+>>> d[5]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 5
+>>> d.get(5)
+>>>
+>>> d.get(5, "unknown value")
+'unknown value'
+>>> d2=d.copy()
+>>> d2
+{101: 'prog', 102: 'java', 103: 'css', 104: 'html'}
+>>> d[101]="python"
+>>> d2
+{101: 'prog', 102: 'java', 103: 'css', 104: 'html'}
+>>> d
+{101: 'python', 102: 'java', 103: 'css', 104: 'html'}
+>>> d2[102]="replaced"
+>>> d2
+{101: 'prog', 102: 'replaced', 103: 'css', 104: 'html'}
+>>> d.update({103:"react", 105:"js"})
+>>> d
+{101: 'python', 102: 'java', 103: 'react', 104: 'html', 105: 'js'}
+>>> l1=[1,2,3,4]
+>>> d3={}
+>>> d3.from keys(l1)
+  File "<stdin>", line 1
+    d3.from keys(l1)
+       ^^^^
+SyntaxError: invalid syntax
+>>> l1=[1,2,3,4]
+>>> d3={}
+>>> d3.from keys(l1)
+  File "<stdin>", line 1
+    d3.from keys(l1)
+       ^^^^
+SyntaxError: invalid syntax
+>>> d
+{101: 'python', 102: 'java', 103: 'react', 104: 'html', 105: 'js'}
+>>> d.pop(104)
+'html'
+>>> d
+{101: 'python', 102: 'java', 103: 'react', 105: 'js'}
+>>> d.pop(200)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 200
+>>> d2
+{101: 'prog', 102: 'replaced', 103: 'css', 104: 'html'}
+>>> d2.clear()
+>>> d
+{101: 'python', 102: 'java', 103: 'react', 105: 'js'}
+>>> d2
+{}
